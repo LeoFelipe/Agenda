@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string controller = ViewBag.Controller ?? ViewContext.RouteData.Values["controller"].ToString();
+    string action = ViewBag.Action ?? ViewContext.RouteData.Values["action"].ToString();
+    string titulo = (ViewBag.Titulo ?? controller ?? "Formulário");
+    titulo = char.ToUpper(titulo[0]) + titulo.Substring(1);
+    string subtitulo = (ViewBag.SubTitulo ?? action ?? "");
+    subtitulo = char.ToUpper(subtitulo[0]) + subtitulo.Substring(1);
+    string cancelar = ViewBag.Cancelar ?? "Index";
+    string formId = ViewBag.FormId ?? "form";
+}
+
+@section JsAdicional {
+    @RenderSection("JsAdicional", required: false)
+}
+
+<h2>
+    <strong>@titulo</strong>
+    <small> - @subtitulo</small>
+</h2>
+
+<br />
+@using (Html.BeginForm(action, controller, FormMethod.Post, new { @id = formId }))
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.AntiForgeryToken()
+            @RenderSection("Form", required: true)
+        </div>
+
+        <div class="panel-footer">
+            <a href="@Url.Action(cancelar, controller)" class="btn btn-default">
+                <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> @(ViewBag.TextoDeBotaoDeSubmissao ?? "Salvar")
+            </button>
+            @RenderSection("BotoesAdicionais", required: false)
+        </div>
+    </div>
+}

@@ -1,0 +1,38 @@
+﻿@model Agenda.Application.ViewModels.Cliente.ClienteViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutDetails.cshtml";
+}
+
+@section JsAdicional{
+    @*@Scripts.Render("~/Views/Clientes/detalhes.js")*@
+}
+
+@section Page {
+    @Html.HiddenFor(model => model.ClienteId)
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+        <dd>@Html.DisplayFor(model => model.Nome)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.CelularPrincipal)</dt>
+        <dd>@Html.DisplayFor(model => model.CelularPrincipal)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.CelularSecundario)</dt>
+        <dd>@Html.DisplayFor(model => model.CelularSecundario)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Telefone)</dt>
+        <dd>@Html.DisplayFor(model => model.Telefone)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+        <dd>@Html.DisplayFor(model => model.Email)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.DataNascimento)</dt>
+        <dd>@Html.DisplayFor(model => model.DataNascimento)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Empresa)</dt>
+        <dd>@Html.DisplayFor(model => model.Empresa)</dd>
+
+        <dt>@Html.DisplayNameFor(model => model.Ativo)</dt>
+        <dd>@Html.DisplayFor(model => model.Ativo)</dd>
+    </dl>
+}

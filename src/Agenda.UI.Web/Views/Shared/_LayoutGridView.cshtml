@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string controller = ViewBag.Controller ?? ViewContext.RouteData.Values["controller"].ToString() ?? "Controller";
+    string action = ViewBag.Action ?? ViewContext.RouteData.Values["action"].ToString() ?? "Action";
+    string cancelar = ViewBag.Cancelar ?? "Index";
+}
+
+@section JsAdicional {
+    @RenderSection("JsAdicional", required: false)
+}
+
+<h2>
+    <strong class="text-capitalize">@controller</strong>
+    <small class="text-capitalize"> - @action</small>
+</h2>
+
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a href="@Url.Action("Cadastrar", controller)" class="btn btn-primary">Novo Cliente</a>
+    </div>
+    <div class="panel-body">
+        @RenderSection("GridView", required: true)
+    </div>
+</div>

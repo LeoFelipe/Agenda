@@ -1,0 +1,19 @@
+﻿<br />
+@{
+    if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Any())
+    {
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h5><strong>Opa! Alguma coisa não deu certo:</strong></h5>
+            <p>@Html.ValidationSummary(true)</p>
+        </div>
+    }
+
+    if (TempData["Sucesso"] != null)
+    {
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <h5><strong>@TempData["Sucesso"]</strong></h5>
+        </div>
+    }
+}

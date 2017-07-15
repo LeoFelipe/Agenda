@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string controller = ViewContext.RouteData.Values["controller"].ToString() ?? "Controller";
+    string action = ViewContext.RouteData.Values["action"].ToString() ?? "Action";
+}
+
+<h2>
+    <strong class="text-capitalize">@controller</strong>
+    <small class="text-capitalize"> - @action</small>
+</h2>
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <address>
+            <h4><strong>Leonardo Felipe</strong></h4>
+            <hr />
+
+            <strong>Email: </strong><a href="mailto:#"><i class="fa fa-envelope" aria-hidden="true"></i> leonardo.fdns@gmail.com </a><br />
+            <strong>GitHub: </strong><a href="https://github.com/LeoFelipe"><i class="fa fa-github" aria-hidden="true"></i> https://github.com/LeoFelipe </a><br />
+            <strong>LinkedIn: </strong><a href="https://www.linkedin.com/in/leonardo-felipe-b924a769/"><i class="fa fa-linkedin-square" aria-hidden="true"></i> https://www.linkedin.com </a>
+        </address>
+    </div>
+
+    <div class="panel-footer">
+        <a href="@Url.Action("Index")" class="btn btn-default">
+            <i class="fa fa-reply" aria-hidden="true"></i> Voltar
+        </a>
+    </div>
+</div>

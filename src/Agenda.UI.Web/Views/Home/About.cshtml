@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string controller = ViewContext.RouteData.Values["controller"].ToString() ?? "Controller";
+    string action = ViewContext.RouteData.Values["action"].ToString() ?? "Action";
+}
+
+<h2>
+    <strong class="text-capitalize">@controller</strong>
+    <small class="text-capitalize"> - @action</small>
+</h2>
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h4><strong>Simple Contact Schedule Project</strong></h4>
+        <hr />
+
+        <p><strong>What is this Project?</strong></p>
+
+        <ul>
+            <li>A Simple Contact Schedule</li>
+            <li>All Contact must have, at least, one Address</li>
+            <li>Each Contact can have N Addresses</li>
+        </ul>
+
+        <br />
+
+        <p><strong>What technologies this project implements?</strong></p>
+
+        <ul>
+            <li>ASP.NET MVC 5</li>
+            <li>.NET Framework 4.6.1</li>
+            <li>Architecture based on SOLID Concepts</li>
+            <li>JQuery 3.1.1</li>
+            <li>Bootstrap 3.3.7</li>
+            <li>Jquery DataTables 1.10.15</li>
+            <li>Font Awesome 4.7.0</li>
+        </ul>
+
+        <br />
+
+        <p class="bg-info text-danger">
+            <strong>The Project isn't complete, other resources and improvements will be implemented over time.</strong>
+        </p>
+    </div>
+
+    <div class="panel-footer">
+        <a href="@Url.Action("Index")" class="btn btn-default">
+            <i class="fa fa-reply" aria-hidden="true"></i> Voltar
+        </a>
+    </div>
+</div>

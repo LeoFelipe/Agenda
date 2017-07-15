@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string controller = ViewBag.Controller ?? ViewContext.RouteData.Values["controller"].ToString() ?? "Controller";
+    string action = ViewBag.Action ?? ViewContext.RouteData.Values["action"].ToString() ?? "Action";
+    string routeId = ViewBag.RouteId ?? Url.RequestContext.RouteData.Values["id"];
+    string cancelar = ViewBag.Cancelar ?? "Index";
+    string formId = ViewBag.FormId ?? "form";
+}
+
+@section JsAdicional {
+    @RenderSection("JsAdicional", required: false)
+}
+
+<h2>
+    <strong class="text-capitalize">@controller</strong>
+    <small class="text-capitalize"> - @action</small>
+</h2>
+
+<br />
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.AntiForgeryToken()
+        @RenderSection("Page", required: true)
+    </div>
+
+    <div class="panel-footer">
+        <a href="@Url.Action(cancelar, controller)" class="btn btn-default">
+            <i class="fa fa-reply" aria-hidden="true"></i> Cancelar
+        </a>
+        <a href="@Url.Action("Editar", controller, new { id = routeId })" class="btn btn-warning">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar
+        </a>
+        <a href="@Url.Action("Excluir", controller, new { id = routeId })" class="btn btn-sm btn-danger" onclick="return confirm('Deseja realmente excluir esse registro de ID: @routeId')">
+            <i class="fa fa-trash" aria-hidden="true"></i> Excluir
+        </a>
+        @RenderSection("BotoesAdicionais", required: false)
+    </div>
+</div>
